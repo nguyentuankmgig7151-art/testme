@@ -1,0 +1,14 @@
+name: Fulfillment acceptance
+on:
+  pull_request:
+    branches: [codex/fulfillment-20261127]
+  push:
+    branches: [codex/fulfillment-20261127]
+jobs:
+  fulfillment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node --test fulfillment/shipment.test.mjs
+      - if: github.event_name == 'push'
+        run: node --test fulfillment/target.test.mjs
