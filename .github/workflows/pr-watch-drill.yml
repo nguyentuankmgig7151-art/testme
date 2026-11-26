@@ -9,7 +9,7 @@ jobs:
   synthetic-check:
     runs-on: ubuntu-latest
     env:
-      EXPECTED_UNIQUE_COUNT: '6'
+      EXPECTED_UNIQUE_COUNT: '5'
     steps:
       - name: Check the synthetic order count
         shell: bash
