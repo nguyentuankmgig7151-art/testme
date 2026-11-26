@@ -1,0 +1,19 @@
+name: PR watch drill
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/pr-watch-drill.yml'
+permissions: {}
+jobs:
+  synthetic-check:
+    runs-on: ubuntu-latest
+    env:
+      EXPECTED_UNIQUE_COUNT: '5'
+    steps:
+      - name: Check the synthetic order count
+        shell: bash
+        run: |
+          actual_unique_count=5
+          printf 'Expected %s unique orders, got %s\n' "$EXPECTED_UNIQUE_COUNT" "$actual_unique_count"
+          test "$actual_unique_count" -eq "$EXPECTED_UNIQUE_COUNT"
